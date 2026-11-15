@@ -1,0 +1,42 @@
+{
+    "name": "celeste-lunar-site-navigator",
+    "version": "1.0.0",
+    "description": "CELESTE - Lunar Landing Site Navigator: compare Moon landing sites and dates by sunlight, Earth visibility and DSN contact.",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "test": "vitest run",
+        "typecheck": "tsc --noEmit",
+        "data:fetch": "node tools/fetch-data.mjs",
+        "data:build": "node tools/build-terrain.ts",
+        "data:horizons": "node tools/fetch-horizons.mjs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@fontsource/ibm-plex-mono": "^5.3.0",
+        "@fontsource/titillium-web": "^5.3.0",
+        "astronomy-engine": "^2.1.19",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "three": "^0.187.0",
+        "zustand": "^5.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "^26.6.6",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@types/three": "^0.187.0",
+        "@vitejs/plugin-react": "^6.3.0",
+        "playwright-core": "^1.65.1",
+        "sharp": "^0.35.5",
+        "typescript": "^7.0.2",
+        "vite": "^8.3.8",
+        "vitest": "^5.1.0"
+    },
+    "aiDisclosure": "Built with AI coding assistants (mainly Anthropic's Claude) under the team's direction: application code, data-processing and test scripts, and documentation. No AI-generated data, images, video or audio; no NASA branding in AI-generated content. See README, 'Use of AI'.",
+    "private": true,
+    "type": "module"
+}

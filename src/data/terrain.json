@@ -1,0 +1,636 @@
+{
+ "generatedUtc": "2026-11-14T23:11:24.774Z",
+ "maskSamples": 1440,
+ "observerHeightsM": [
+  2,
+  10
+ ],
+ "maxDistKm": 350,
+ "snapRadiusKm": 4,
+ "sites": {
+  "connecting-ridge": {
+   "lat": -89.43903,
+   "lon": -137.14402,
+   "groundHeightM": 1959,
+   "snappedKm": 0.74,
+   "snapGridM": 20,
+   "offsets": [
+    0,
+    1440
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -3.19,
+   "skylineMaxDeg": -0.57
+  },
+  "connecting-ridge-ext": {
+   "lat": -89.00479,
+   "lon": -96.41148,
+   "groundHeightM": 1556,
+   "snappedKm": 3.02,
+   "snapGridM": 20,
+   "offsets": [
+    2880,
+    4320
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -3.32,
+   "skylineMaxDeg": 0.78
+  },
+  "peak-near-shackleton": {
+   "lat": -88.80927,
+   "lon": 123.72968,
+   "groundHeightM": 1649,
+   "snappedKm": 0.06,
+   "snapGridM": 20,
+   "offsets": [
+    5760,
+    7200
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -3.15,
+   "skylineMaxDeg": -0.28
+  },
+  "de-gerlache-rim-1": {
+   "lat": -88.66401,
+   "lon": -68.40606,
+   "groundHeightM": 1815,
+   "snappedKm": 0.68,
+   "snapGridM": 20,
+   "offsets": [
+    8640,
+    10080
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -3.7,
+   "skylineMaxDeg": -0.22
+  },
+  "de-gerlache-rim-2": {
+   "lat": -88.32693,
+   "lon": -67.60512,
+   "groundHeightM": 941,
+   "snappedKm": 4,
+   "snapGridM": 20,
+   "offsets": [
+    11520,
+    12960
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -3.29,
+   "skylineMaxDeg": 20.04
+  },
+  "de-gerlache-kocher": {
+   "lat": -85.69939,
+   "lon": -116.56112,
+   "groundHeightM": 2896,
+   "snappedKm": 3.98,
+   "snapGridM": 40,
+   "offsets": [
+    14400,
+    15840
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -4,
+   "skylineMaxDeg": 7.12
+  },
+  "haworth": {
+   "lat": -86.7639,
+   "lon": -22.777,
+   "groundHeightM": 1627,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    17280,
+    18720
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": 0,
+   "skylineMaxDeg": 5.93
+  },
+  "malapert-massif": {
+   "lat": -85.98003,
+   "lon": 1.62584,
+   "groundHeightM": 5103,
+   "snappedKm": 3.98,
+   "snapGridM": 40,
+   "offsets": [
+    20160,
+    21600
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -4.96,
+   "skylineMaxDeg": 5.85
+  },
+  "leibnitz-beta": {
+   "lat": -85.40359,
+   "lon": 31.69094,
+   "groundHeightM": 6462,
+   "snappedKm": 0.71,
+   "snapGridM": 40,
+   "offsets": [
+    23040,
+    24480
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -3.8,
+   "skylineMaxDeg": 1.23
+  },
+  "nobile-rim-1": {
+   "lat": -85.30879,
+   "lon": 37.06151,
+   "groundHeightM": 6740,
+   "snappedKm": 3.99,
+   "snapGridM": 40,
+   "offsets": [
+    25920,
+    27360
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -5.52,
+   "skylineMaxDeg": 4.85
+  },
+  "nobile-rim-2": {
+   "lat": -84.06592,
+   "lon": 59.23702,
+   "groundHeightM": 1469,
+   "snappedKm": 3.64,
+   "snapGridM": 80,
+   "offsets": [
+    28800,
+    30240
+   ],
+   "terrain": "LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -2.48,
+   "skylineMaxDeg": 5.62
+  },
+  "amundsen-rim": {
+   "lat": -84.34793,
+   "lon": 68.91069,
+   "groundHeightM": 676,
+   "snappedKm": 3.96,
+   "snapGridM": 80,
+   "offsets": [
+    31680,
+    33120
+   ],
+   "terrain": "LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -2.28,
+   "skylineMaxDeg": 4.49
+  },
+  "faustini-rim-a": {
+   "lat": -87.83067,
+   "lon": 93.14553,
+   "groundHeightM": 426,
+   "snappedKm": 3.99,
+   "snapGridM": 20,
+   "offsets": [
+    34560,
+    36000
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -2.1,
+   "skylineMaxDeg": 5.39
+  },
+  "shackleton-rim": {
+   "lat": -89.78131,
+   "lon": -156.25683,
+   "groundHeightM": 1738,
+   "snappedKm": 1.91,
+   "snapGridM": 20,
+   "offsets": [
+    37440,
+    38880
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -2.56,
+   "skylineMaxDeg": 1.03
+  },
+  "shackleton-rim-b": {
+   "lat": -89.63486,
+   "lon": 66.18988,
+   "groundHeightM": 978,
+   "snappedKm": 3.99,
+   "snapGridM": 20,
+   "offsets": [
+    40320,
+    41760
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -2.54,
+   "skylineMaxDeg": 11.43
+  },
+  "shackleton-floor": {
+   "lat": -89.67,
+   "lon": 129.78,
+   "groundHeightM": -2789,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    43200,
+    44640
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": 19.77,
+   "skylineMaxDeg": 23.58
+  },
+  "shoemaker-faustini": {
+   "lat": -87.1835,
+   "lon": 62.835,
+   "groundHeightM": 547,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    46080,
+    47520
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -0.72,
+   "skylineMaxDeg": 4.33
+  },
+  "shoemaker-rim-a": {
+   "lat": -88.18555,
+   "lon": 11.86131,
+   "groundHeightM": -376,
+   "snappedKm": 3.22,
+   "snapGridM": 20,
+   "offsets": [
+    48960,
+    50400
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -1.23,
+   "skylineMaxDeg": 3.61
+  },
+  "shoemaker-rim-c": {
+   "lat": -88.91415,
+   "lon": 30.98166,
+   "groundHeightM": -282,
+   "snappedKm": 3.83,
+   "snapGridM": 20,
+   "offsets": [
+    51840,
+    53280
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -1,
+   "skylineMaxDeg": 3.16
+  },
+  "shoemaker-rim-e": {
+   "lat": -88.06432,
+   "lon": 72.91091,
+   "groundHeightM": -381,
+   "snappedKm": 3.99,
+   "snapGridM": 20,
+   "offsets": [
+    54720,
+    56160
+   ],
+   "terrain": "LOLA 20 m/px within 10 km + LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -1.34,
+   "skylineMaxDeg": 4.38
+  },
+  "cabeus-wall": {
+   "lat": -86.9243,
+   "lon": -71.565,
+   "groundHeightM": -2229,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    57600,
+    59040
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": 0.7,
+   "skylineMaxDeg": 4.74
+  },
+  "amundsen-1": {
+   "lat": -83.9046,
+   "lon": 89.535,
+   "groundHeightM": -3632,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    60480,
+    61920
+   ],
+   "terrain": "LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": 1.45,
+   "skylineMaxDeg": 8.36
+  },
+  "idelson-l": {
+   "lat": -84.5397,
+   "lon": 126.904,
+   "groundHeightM": -3097,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    63360,
+    64800
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -0.27,
+   "skylineMaxDeg": 5.86
+  },
+  "malapert-crater": {
+   "lat": -84.8034,
+   "lon": 8.387,
+   "groundHeightM": -2264,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    66240,
+    67680
+   ],
+   "terrain": "LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": 2.35,
+   "skylineMaxDeg": 13.02
+  },
+  "im1-odysseus": {
+   "lat": -80.13,
+   "lon": 1.44,
+   "groundHeightM": 2593,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    69120,
+    70560
+   ],
+   "terrain": "LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -0.25,
+   "skylineMaxDeg": 10.92
+  },
+  "im2-athena": {
+   "lat": -84.7906,
+   "lon": 29.1957,
+   "groundHeightM": 5322,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    72000,
+    73440
+   ],
+   "terrain": "LOLA 40 m/px within 30 km + LOLA 80 m/px within 60 km + LOLA LDEM_75S_240M (240 m/px) beyond + LOLA LDEM_16 (1.9 km/px) outside polar coverage",
+   "resolution": "high",
+   "uncovered": 0,
+   "skylineMinDeg": -1.47,
+   "skylineMaxDeg": 4.06
+  },
+  "blue-ghost-1": {
+   "lat": 18.56,
+   "lon": 61.81,
+   "groundHeightM": -3645,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    74880,
+    76320
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.27,
+   "skylineMaxDeg": 0.55
+  },
+  "chandrayaan-3": {
+   "lat": -69.373,
+   "lon": 32.319,
+   "groundHeightM": 536,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    77760,
+    79200
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": 0.11,
+   "skylineMaxDeg": 2.24
+  },
+  "slim": {
+   "lat": -13.316,
+   "lon": 25.251,
+   "groundHeightM": -910,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    80640,
+    82080
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": 0.43,
+   "skylineMaxDeg": 7.43
+  },
+  "change-4": {
+   "lat": -45.4446,
+   "lon": 177.5991,
+   "groundHeightM": -5928,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    83520,
+    84960
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.11,
+   "skylineMaxDeg": 2.81
+  },
+  "change-6": {
+   "lat": -41.6385,
+   "lon": -153.9852,
+   "groundHeightM": -5255,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    86400,
+    87840
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.13,
+   "skylineMaxDeg": 3.02
+  },
+  "change-5": {
+   "lat": 43.0576,
+   "lon": -51.9161,
+   "groundHeightM": -2544,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    89280,
+    90720
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.37,
+   "skylineMaxDeg": 1.06
+  },
+  "change-3": {
+   "lat": 44.1214,
+   "lon": -19.5116,
+   "groundHeightM": -2631,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    92160,
+    93600
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.46,
+   "skylineMaxDeg": 0.23
+  },
+  "apollo-11": {
+   "lat": 0.67416,
+   "lon": 23.47314,
+   "groundHeightM": -1922,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    95040,
+    96480
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.74,
+   "skylineMaxDeg": 0.92
+  },
+  "apollo-12": {
+   "lat": -3.0128,
+   "lon": -23.4219,
+   "groundHeightM": -1427,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    97920,
+    99360
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.56,
+   "skylineMaxDeg": 0.36
+  },
+  "apollo-14": {
+   "lat": -3.64589,
+   "lon": -17.47194,
+   "groundHeightM": -1048,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    100800,
+    102240
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.43,
+   "skylineMaxDeg": 1.49
+  },
+  "apollo-15": {
+   "lat": 26.13239,
+   "lon": 3.6333,
+   "groundHeightM": -1938,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    103680,
+    105120
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.05,
+   "skylineMaxDeg": 12.41
+  },
+  "apollo-16": {
+   "lat": -8.9734,
+   "lon": 15.5011,
+   "groundHeightM": 7,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    106560,
+    108000
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": -0.01,
+   "skylineMaxDeg": 3.9
+  },
+  "apollo-17": {
+   "lat": 20.1911,
+   "lon": 30.7723,
+   "groundHeightM": -2617,
+   "snappedKm": 0,
+   "snapGridM": 0,
+   "offsets": [
+    109440,
+    110880
+   ],
+   "terrain": "LOLA LDEM_16 global grid (1.9 km/px): regional relief only",
+   "resolution": "coarse",
+   "uncovered": 0,
+   "skylineMinDeg": 0.18,
+   "skylineMaxDeg": 11.61
+  }
+ }
+}

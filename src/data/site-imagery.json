@@ -1,0 +1,1000 @@
+{
+ "note": "Written by tools/fetch-site-imagery.mjs. Patches are azimuthal equidistant, centred on the site, north up; halfKm is the distance from the centre to the edge.",
+ "earth": {
+  "baikonur-cosmodrome-kazakhstan": {
+   "lat": 45.96,
+   "lon": 63.31,
+   "levels": [
+    {
+     "file": "earth/baikonur-cosmodrome-kazakhstan-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/baikonur-cosmodrome-kazakhstan-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/baikonur-cosmodrome-kazakhstan-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "cape-canaveral-florida-usa": {
+   "lat": 28.49,
+   "lon": -80.58,
+   "levels": [
+    {
+     "file": "earth/cape-canaveral-florida-usa-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/cape-canaveral-florida-usa-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/cape-canaveral-florida-usa-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "kennedy-space-center-lc-39-florida-usa": {
+   "lat": 28.608,
+   "lon": -80.604,
+   "levels": [
+    {
+     "file": "earth/kennedy-space-center-lc-39-florida-usa-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/kennedy-space-center-lc-39-florida-usa-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/kennedy-space-center-lc-39-florida-usa-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "uchinoura-space-center-japan": {
+   "lat": 31.25,
+   "lon": 131.08,
+   "levels": [
+    {
+     "file": "earth/uchinoura-space-center-japan-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/uchinoura-space-center-japan-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/uchinoura-space-center-japan-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "vandenberg-california-usa": {
+   "lat": 34.74,
+   "lon": -120.57,
+   "levels": [
+    {
+     "file": "earth/vandenberg-california-usa-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/vandenberg-california-usa-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/vandenberg-california-usa-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "guiana-space-centre-kourou": {
+   "lat": 5.24,
+   "lon": -52.77,
+   "levels": [
+    {
+     "file": "earth/guiana-space-centre-kourou-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/guiana-space-centre-kourou-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/guiana-space-centre-kourou-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "tanegashima-space-center-japan": {
+   "lat": 30.4,
+   "lon": 130.97,
+   "levels": [
+    {
+     "file": "earth/tanegashima-space-center-japan-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/tanegashima-space-center-japan-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/tanegashima-space-center-japan-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "xichang-satellite-launch-center-china": {
+   "lat": 28.25,
+   "lon": 102.03,
+   "levels": [
+    {
+     "file": "earth/xichang-satellite-launch-center-china-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/xichang-satellite-launch-center-china-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/xichang-satellite-launch-center-china-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "satish-dhawan-space-centre-sriharikota-india": {
+   "lat": 13.73,
+   "lon": 80.23,
+   "levels": [
+    {
+     "file": "earth/satish-dhawan-space-centre-sriharikota-india-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/satish-dhawan-space-centre-sriharikota-india-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/satish-dhawan-space-centre-sriharikota-india-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "wallops-island-virginia-usa": {
+   "lat": 37.83,
+   "lon": -75.49,
+   "levels": [
+    {
+     "file": "earth/wallops-island-virginia-usa-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/wallops-island-virginia-usa-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/wallops-island-virginia-usa-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "wenchang-space-launch-site-china": {
+   "lat": 19.61,
+   "lon": 110.95,
+   "levels": [
+    {
+     "file": "earth/wenchang-space-launch-site-china-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/wenchang-space-launch-site-china-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/wenchang-space-launch-site-china-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "mahia-peninsula-new-zealand": {
+   "lat": -39.26,
+   "lon": 177.86,
+   "levels": [
+    {
+     "file": "earth/mahia-peninsula-new-zealand-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/mahia-peninsula-new-zealand-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/mahia-peninsula-new-zealand-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  },
+  "vostochny-cosmodrome-russia": {
+   "lat": 51.88,
+   "lon": 128.33,
+   "levels": [
+    {
+     "file": "earth/vostochny-cosmodrome-russia-wide.webp",
+     "halfKm": 700,
+     "source": "Blue Marble Next Generation, 500 m"
+    },
+    {
+     "file": "earth/vostochny-cosmodrome-russia-mid.webp",
+     "halfKm": 150,
+     "source": "Landsat WELD annual composite, 30 m"
+    },
+    {
+     "file": "earth/vostochny-cosmodrome-russia-near.webp",
+     "halfKm": 28,
+     "source": "Landsat WELD annual composite, 30 m"
+    }
+   ]
+  }
+ },
+ "moon": {
+  "luna-2": {
+   "lat": 30,
+   "lon": 0,
+   "levels": [
+    {
+     "file": "moon/luna-2-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-2-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "ranger-4": {
+   "lat": -15.5,
+   "lon": -130.7,
+   "levels": [
+    {
+     "file": "moon/ranger-4-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/ranger-4-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "ranger-6": {
+   "lat": 9.3864,
+   "lon": 21.4806,
+   "levels": [
+    {
+     "file": "moon/ranger-6-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/ranger-6-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "ranger-7": {
+   "lat": -10.634,
+   "lon": -20.677,
+   "levels": [
+    {
+     "file": "moon/ranger-7-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/ranger-7-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "ranger-8": {
+   "lat": 2.6376,
+   "lon": 24.7881,
+   "levels": [
+    {
+     "file": "moon/ranger-8-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/ranger-8-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "ranger-9": {
+   "lat": -12.8281,
+   "lon": -2.3884,
+   "levels": [
+    {
+     "file": "moon/ranger-9-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/ranger-9-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-5": {
+   "lat": -1.35,
+   "lon": -25.48,
+   "levels": [
+    {
+     "file": "moon/luna-5-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-5-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-7": {
+   "lat": 9,
+   "lon": -49,
+   "levels": [
+    {
+     "file": "moon/luna-7-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-7-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-8": {
+   "lat": 9.1,
+   "lon": -63.3,
+   "levels": [
+    {
+     "file": "moon/luna-8-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-8-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-9": {
+   "lat": 7.13,
+   "lon": -64.37,
+   "levels": [
+    {
+     "file": "moon/luna-9-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-9-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-1": {
+   "lat": -2.4745,
+   "lon": -43.3398,
+   "levels": [
+    {
+     "file": "moon/surveyor-1-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-1-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-2": {
+   "lat": 5.5,
+   "lon": -12,
+   "levels": [
+    {
+     "file": "moon/surveyor-2-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-2-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-13": {
+   "lat": 18.87,
+   "lon": -62.05,
+   "levels": [
+    {
+     "file": "moon/luna-13-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-13-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-3": {
+   "lat": -3.0162,
+   "lon": -23.418,
+   "levels": [
+    {
+     "file": "moon/surveyor-3-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-3-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-4": {
+   "lat": 0.5,
+   "lon": -1.5,
+   "levels": [
+    {
+     "file": "moon/surveyor-4-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-4-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-5": {
+   "lat": 1.4551,
+   "lon": 23.1943,
+   "levels": [
+    {
+     "file": "moon/surveyor-5-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-5-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-6": {
+   "lat": 0.4742,
+   "lon": -1.4275,
+   "levels": [
+    {
+     "file": "moon/surveyor-6-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-6-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "surveyor-7": {
+   "lat": -40.9812,
+   "lon": -11.5127,
+   "levels": [
+    {
+     "file": "moon/surveyor-7-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/surveyor-7-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "apollo-11": {
+   "lat": 0.67416,
+   "lon": 23.47314,
+   "levels": [
+    {
+     "file": "moon/apollo-11-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/apollo-11-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "apollo-12": {
+   "lat": -3.0128,
+   "lon": -23.4219,
+   "levels": [
+    {
+     "file": "moon/apollo-12-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/apollo-12-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-16": {
+   "lat": -0.5137,
+   "lon": 56.3638,
+   "levels": [
+    {
+     "file": "moon/luna-16-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-16-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-17": {
+   "lat": 38.23764,
+   "lon": -35.00163,
+   "levels": [
+    {
+     "file": "moon/luna-17-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-17-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "apollo-14": {
+   "lat": -3.64589,
+   "lon": -17.47194,
+   "levels": [
+    {
+     "file": "moon/apollo-14-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/apollo-14-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "apollo-15": {
+   "lat": 26.13239,
+   "lon": 3.6333,
+   "levels": [
+    {
+     "file": "moon/apollo-15-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/apollo-15-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-18": {
+   "lat": 3.76,
+   "lon": 56.66,
+   "levels": [
+    {
+     "file": "moon/luna-18-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-18-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-20": {
+   "lat": 3.7863,
+   "lon": 56.6242,
+   "levels": [
+    {
+     "file": "moon/luna-20-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-20-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "apollo-16": {
+   "lat": -8.9734,
+   "lon": 15.5011,
+   "levels": [
+    {
+     "file": "moon/apollo-16-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/apollo-16-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "apollo-17": {
+   "lat": 20.1911,
+   "lon": 30.7723,
+   "levels": [
+    {
+     "file": "moon/apollo-17-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/apollo-17-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-21": {
+   "lat": 25.9994,
+   "lon": 30.4076,
+   "levels": [
+    {
+     "file": "moon/luna-21-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-21-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-23": {
+   "lat": 12.6667,
+   "lon": 62.1511,
+   "levels": [
+    {
+     "file": "moon/luna-23-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-23-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-24": {
+   "lat": 12.7142,
+   "lon": 62.2129,
+   "levels": [
+    {
+     "file": "moon/luna-24-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-24-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "change-3": {
+   "lat": 44.1214,
+   "lon": -19.5117,
+   "levels": [
+    {
+     "file": "moon/change-3-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/change-3-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "change-4": {
+   "lat": -45.4561,
+   "lon": 177.5885,
+   "levels": [
+    {
+     "file": "moon/change-4-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/change-4-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "beresheet": {
+   "lat": 32.5956,
+   "lon": 19.3496,
+   "levels": [
+    {
+     "file": "moon/beresheet-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/beresheet-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "chandrayaan-2": {
+   "lat": -70.881,
+   "lon": 22.784,
+   "levels": [
+    {
+     "file": "moon/chandrayaan-2-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 666 m/px"
+    },
+    {
+     "file": "moon/chandrayaan-2-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "change-5": {
+   "lat": 43.0576,
+   "lon": -51.9161,
+   "levels": [
+    {
+     "file": "moon/change-5-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/change-5-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "hakuto-r-m1": {
+   "lat": 47.581,
+   "lon": 44.094,
+   "levels": [
+    {
+     "file": "moon/hakuto-r-m1-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/hakuto-r-m1-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "chandrayaan-3": {
+   "lat": -69.3741,
+   "lon": 32.32,
+   "levels": [
+    {
+     "file": "moon/chandrayaan-3-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/chandrayaan-3-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "luna-25": {
+   "lat": -57.865,
+   "lon": 61.36,
+   "levels": [
+    {
+     "file": "moon/luna-25-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/luna-25-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "slim": {
+   "lat": -13.316,
+   "lon": 25.251,
+   "levels": [
+    {
+     "file": "moon/slim-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/slim-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "intuitive-machines-1-odysseus": {
+   "lat": -80.13,
+   "lon": 1.44,
+   "levels": [
+    {
+     "file": "moon/intuitive-machines-1-odysseus-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 666 m/px"
+    },
+    {
+     "file": "moon/intuitive-machines-1-odysseus-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 167 m/px"
+    }
+   ]
+  },
+  "change-6": {
+   "lat": -41.6385,
+   "lon": -153.9852,
+   "levels": [
+    {
+     "file": "moon/change-6-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/change-6-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "resilience-m2": {
+   "lat": 60.4445,
+   "lon": -4.588,
+   "levels": [
+    {
+     "file": "moon/resilience-m2-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/resilience-m2-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "blue-ghost-1-firefly": {
+   "lat": 18.562,
+   "lon": 61.81,
+   "levels": [
+    {
+     "file": "moon/blue-ghost-1-firefly-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    },
+    {
+     "file": "moon/blue-ghost-1-firefly-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 83 m/px"
+    }
+   ]
+  },
+  "intuitive-machines-2-prime-1": {
+   "lat": -84.7906,
+   "lon": 29.1957,
+   "levels": [
+    {
+     "file": "moon/intuitive-machines-2-prime-1-wide.webp",
+     "halfKm": 180,
+     "source": "LROC WAC global mosaic, tiles at 1333 m/px"
+    },
+    {
+     "file": "moon/intuitive-machines-2-prime-1-near.webp",
+     "halfKm": 45,
+     "source": "LROC WAC global mosaic, tiles at 333 m/px"
+    }
+   ]
+  }
+ }
+}

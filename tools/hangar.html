@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- Contact sheet of every launch vehicle and spacecraft model, for checking them by eye.
+     Served by the dev server: http://localhost:5173/tools/hangar.html?set=rockets&t=-1
+       set = rockets | spacecraft | surface      t = seconds after liftoff (rockets) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>CELESTE hangar</title>
+<style>
+  html, body { margin: 0; background: #0a0d12; color: #ece6d6; font: 11px/1.3 ui-monospace, Consolas, monospace; }
+  canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+  .tag { position: fixed; padding: 2px 4px; pointer-events: none; text-shadow: 0 0 3px #000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tag b { color: #ff7a45; font-weight: 600; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { buildLauncher, buildSpacecraft } from '/src/gl/craft.ts';
+import missionsData from '/src/data/missions.json';
+
+const q = new URLSearchParams(location.search);
+const set = q.get('set') ?? 'rockets', t = Number(q.get('t') ?? -1), page = Number(q.get('page') ?? 0), per = Number(q.get('per') ?? 30);
+const missions = missionsData.missions;
+const base = '/';
+let items = [];
+if (set === 'rockets') {
+  const seen = new Map();
+  for (const m of missions) if (!seen.has(m.vehicle)) seen.set(m.vehicle, m);
+  for (const m of seen.values()) { const c = await buildLauncher(m.vehicleClass, m.vehicle, base); c.update(t, t >= 0); c.sync?.(); items.push({ c, name: m.vehicle, sub: `${c.stageName(t)} · ${(c.lengthKm * 1000).toFixed(1)} m` }); }
+} else {
+  const seen = new Set();
+  for (const m of missions) {
+    const c = await buildSpacecraft({ id: m.id, name: m.name, category: m.category, hasSurface: !!m.surface }, base);
+    if (set === 'surface') { if (!c.hasSurfaceModel) continue; c.setMode('surface'); }
+    const key = c.label.replace(m.name, '');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    items.push({ c, name: m.name, sub: `${c.source} · ${(c.lengthKm * 1000).toFixed(2)} m` });
+  }
+}
+items = items.slice(page * per, page * per + per);
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.localClippingEnabled = true;
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const W = innerWidth, H = innerHeight;
+renderer.setSize(W, H, false);
+const scene = new THREE.Scene();
+const sun = new THREE.DirectionalLight(0xffffff, 3);
+sun.position.set(0.6, 0.5, 0.8);
+scene.add(sun, new THREE.AmbientLight(0x8fa3c8, 0.5));
+for (const it of items) { scene.add(it.c.object); it.c.object.visible = false; }
+
+const cols = Math.ceil(Math.sqrt(items.length * (W / H) * (set === 'rockets' ? 2.2 : 1))), rows = Math.ceil(items.length / cols);
+const cw = W / cols, ch = H / rows;
+renderer.setScissorTest(true);
+renderer.setClearColor(0x0a0d12);
+items.forEach((it, i) => {
+  const cx = i % cols, cy = Math.floor(i / cols);
+  it.c.sync?.();
+  it.c.object.visible = true;
+  const box = new THREE.Box3().setFromObject(it.c.object);
+  const size = box.getSize(new THREE.Vector3()), mid = box.getCenter(new THREE.Vector3());
+  const half = Math.max(size.y / 2, (Math.max(size.x, size.z) / 2) * (ch / cw)) * 1.25 + 1e-6;
+  const cam = new THREE.OrthographicCamera(-half * cw / ch, half * cw / ch, half, -half, 0.0001, 100);
+  cam.position.copy(mid).add(new THREE.Vector3(0.55, 0.3, 0.78).multiplyScalar(5));
+  cam.lookAt(mid);
+  renderer.setViewport(cx * cw, H - (cy + 1) * ch, cw, ch);
+  renderer.setScissor(cx * cw, H - (cy + 1) * ch, cw, ch);
+  renderer.render(scene, cam);
+  it.c.object.visible = false;
+  const tag = document.createElement('div');
+  tag.className = 'tag';
+  tag.style.cssText = `left:${cx * cw}px;top:${cy * ch}px;width:${cw - 8}px`;
+  tag.innerHTML = `<b>${it.name}</b><br>${it.sub}`;
+  document.body.appendChild(tag);
+});
+document.title = 'ready';
+</script>
+</body>
+</html>

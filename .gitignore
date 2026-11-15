@@ -1,0 +1,14 @@
+node_modules/
+dist/
+# Raw NASA downloads (hundreds of MB). Recreate with: npm run data:fetch
+data-cache/
+# Output of tools/qa-screens.mjs
+qa-shots/
+# Design references collected from other people's work (game screenshots, brand artwork):
+# kept locally for inspiration, not ours to redistribute.
+UI reference/
+# Presentation deck and its build script are kept outside the repository.
+*.pptx
+tools/build-presentation.py
+*.log
+.DS_Store
