@@ -33,7 +33,7 @@ a{color:inherit}
 .top{display:grid;grid-template-columns:auto auto 1fr auto auto;gap:18px;align-items:center;padding:6px 26px 14px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo svg{width:40px;height:40px}
-.logo b{font-family:var(--head);font-size:30px;letter-spacing:.08em;color:#efe9dc;text-shadow:0 1px 0 #8a8270,0 -1px 0 #fff;-webkit-text-stroke:1px #8f887a;line-height:1}
+.logo b{font-family:var(--head);font-weight:700;font-size:32px;letter-spacing:.1em;color:#3a352c;text-shadow:0 1px 0 #f7f2e7;line-height:1}
 .logo small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink2)}
 .lamps{display:flex;gap:6px;padding:6px;background:#a9a18d;border-radius:8px;border:1px solid #7f7867}
 .lamp{width:26px;height:26px;border-radius:5px;border:1px solid #444;cursor:pointer;transition:.15s;background:#555}
@@ -142,6 +142,31 @@ td,th{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;verti
 th{font-family:var(--mono);font-weight:400;color:var(--orange);font-size:13px;letter-spacing:.08em}
 td:first-child{color:var(--cream);white-space:nowrap}
 footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;color:#7c8594}
+/* ---------- animations ---------- */
+.screen img.contain{object-fit:contain;background:#05080d}
+.card.wide img{aspect-ratio:3/1}
+.fill,.thumb{transition:width .5s ease,left .5s ease}
+.lamp.on{animation:flick 6s infinite}
+.lamp.y.on{animation-delay:1.3s}.lamp.r.on{animation:blink 1.6s infinite}
+@keyframes flick{0%,92%,100%{filter:none}94%{filter:brightness(.5)}96%{filter:none}97%{filter:brightness(.6)}}
+@keyframes blink{0%,60%{opacity:1}70%,90%{opacity:.35}}
+.status i{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.bars i.on{animation:bar 1.8s ease-in-out infinite;transform-origin:bottom}
+@keyframes bar{50%{transform:scaleY(.82)}}
+.screen{animation:boot 1.2s ease-out}
+@keyframes boot{0%{filter:brightness(3) contrast(.4);transform:scaleY(.02)}40%{transform:scaleY(1)}100%{filter:none}}
+.screen img.in{animation:fadein .45s ease}
+@keyframes fadein{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
+.card{transition:transform .2s ease,border-color .2s}.card:hover{transform:translateY(-4px);border-color:var(--orange)}
+.cb:active,.bigbtn:active,.phase:active{transform:translateY(1px) scale(.98)}
+.cb.on{outline:2px solid var(--orange)}
+.knob{transition:transform .3s ease}
+.gauge .needle{position:absolute;left:50%;bottom:0;width:3px;height:70px;margin-left:-1.5px;background:var(--orange);transform-origin:bottom;border-radius:2px;animation:sweep 3s ease-in-out infinite alternate;box-shadow:0 0 6px var(--orange)}
+@keyframes sweep{from{transform:rotate(-70deg)}to{transform:rotate(70deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;place-items:center;z-index:50;cursor:zoom-out;padding:16px}
 .lb.on{display:grid}.lb img{max-width:100%;max-height:92vh;border-radius:8px}
 
@@ -190,7 +215,7 @@ footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;
     <!-- center screen -->
     <div class="crt">
       <div class="screen" id="screen">
-        <img id="frame" src="img/focus-terrain.png" alt="">
+        <img id="frame" src="img/feat-terrain.jpg" alt="">
         <div class="grid" id="gridL" hidden></div>
         <div class="scan" id="scanL"></div>
         <div class="ttl" id="ttl">SOUTH POLAR TERRAIN</div>
@@ -222,8 +247,8 @@ footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;
         <div class="in">
           <h3>MISSION CATALOGUE</h3>
           <small>LUNAR MISSIONS ON FILE · 1958–2026</small>
-          <div class="gauge"><div>FLIGHTS<b id="cnt">104</b></div></div>
-          <a class="bigbtn" href="#launch">RUN IN BROWSER</a>
+          <div class="gauge"><span class="needle"></span><div>FLIGHTS<b id="cnt">104</b></div></div>
+          <button class="bigbtn" id="runHere">RUN IN BROWSER</button>
         </div>
       </div>
     </div>
@@ -278,9 +303,9 @@ footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;
   <div class="kick">02 · Features</div>
   <h2>One Moon, three ways to look at it</h2>
   <div class="cards">
-    <div class="card"><img src="img/explore.png" alt="Explore mode with globe, horizon scope and briefing"><div><h3>Moon globe</h3><p>Day/night line, Earth-visibility limit, and a plain-language briefing. Double-click anywhere to drop a custom site.</p></div></div>
-    <div class="card"><img src="img/focus-terrain.png" alt="South polar terrain"><div><h3>Polar terrain</h3><p>NASA LOLA 80 m relief of the south pole (7600 × 7600 samples) with GPU ray-marched shadows on a 4096² map.</p></div></div>
-    <div class="card"><img src="img/mission-control.png" alt="Mission control mode"><div><h3>Mission overview</h3><p>Focus, Explore and Mission control modes: trackers, DSN stations, solar power, event reports and CSV export.</p></div></div>
+    <div class="card"><img src="img/feat-globe.jpg" alt="Moon globe with day/night line and sites"><div><h3>Moon globe</h3><p>Day/night line, Earth-visibility limit, and a plain-language briefing. Double-click anywhere to drop a custom site.</p></div></div>
+    <div class="card"><img src="img/feat-terrain.jpg" alt="South polar terrain"><div><h3>Polar terrain</h3><p>NASA LOLA 80 m relief of the south pole (7600 × 7600 samples) with GPU ray-marched shadows on a 4096² map.</p></div></div>
+    <div class="card"><img src="img/feat-overview.jpg" alt="Mission briefing panel"><div><h3>Mission overview</h3><p>Focus, Explore and Mission control modes: trackers, DSN stations, solar power, event reports and CSV export.</p></div></div>
   </div>
 </section>
 
@@ -289,12 +314,13 @@ footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;
   <div class="kick">03 · How we solved the objectives</div>
   <h2>Every challenge objective, answered on screen</h2>
   <div class="cards">
-    <div class="card"><img src="img/compare.png" alt="Compare sites"><div><h3>Choose and compare sites</h3><p>39 curated sites or any coordinate; up to five side by side on sunlight, Earth view, DSN contact and energy.</p></div></div>
-    <div class="card"><img src="img/date-finder.png" alt="Date finder"><div><h3>Any date, 1960 to 2100</h3><p>Scrub or play from 10 min/s to 5 days/s. The date finder scores every landing date and ranks the best.</p></div></div>
-    <div class="card"><img src="img/explore.png" alt="Horizon scope"><div><h3>Sun and Earth on the real horizon</h3><p>360° LOLA skyline (1,440 rays to 350 km), both disks at true scale, countdowns to sunset and Earthset.</p></div></div>
-    <div class="card"><img src="img/events.png" alt="Event reports"><div><h3>Power and communication</h3><p>Solar elevation, visible disk, irradiance and kWh for three array types; line of sight to Goldstone, Madrid and Canberra.</p></div></div>
-    <div class="card"><img src="img/mission-light.png" alt="Mission illumination map"><div><h3>Why metres matter</h3><p>The mission-illumination map drops from ~100% to 0% sunlit within a few km. The mast switch shows what 8 m buys.</p></div></div>
-    <div class="card"><img src="img/12-shackleton-floor.png" alt="Shackleton crater floor"><div><h3>Physically checked</h3><p>Tests confirm Shackleton's floor never sees the Sun or Earth, and Chang'e 4 on the far side never sees Earth.</p></div></div>
+    <div class="card wide"><img src="img/obj-compare.jpg" alt="Compare sites table"><div><h3>Choose and compare sites</h3><p>39 curated sites or any coordinate; up to five side by side on sunlight, Earth view, DSN contact and energy.</p></div></div>
+    <div class="card wide"><img src="img/obj-dates.jpg" alt="Date finder best landing dates"><div><h3>Any date, 1960 to 2100</h3><p>Scrub or play from 10 min/s to 5 days/s. The date finder scores every landing date and ranks the best.</p></div></div>
+    <div class="card wide"><img src="img/obj-horizon.jpg" alt="Local horizon scope"><div><h3>Sun and Earth on the real horizon</h3><p>360° LOLA skyline (1,440 rays to 350 km), both disks at true scale, countdowns to sunset and Earthset.</p></div></div>
+    <div class="card wide"><img src="img/obj-dsn.jpg" alt="DSN contact report"><div><h3>Power and communication</h3><p>Solar elevation, visible disk, irradiance and kWh for three array types; line of sight to Goldstone, Madrid and Canberra.</p></div></div>
+    <div class="card wide"><img src="img/obj-modes.jpg" alt="Focus, Explore and Mission control modes"><div><h3>Every skill level</h3><p>Focus to present, Explore to learn, Mission control to plan: the same numbers, in plain words or full units.</p></div></div>
+    <div class="card wide"><img src="img/obj-light.jpg" alt="Mission illumination map"><div><h3>Why metres matter</h3><p>The mission-illumination map drops from ~100% to 0% sunlit within a few km. The mast switch shows what 8 m buys.</p></div></div>
+    <div class="card wide"><img src="img/val-shackleton.jpg" alt="Shackleton crater floor" style="aspect-ratio:3/1"><div><h3>Physically checked</h3><p>Tests confirm Shackleton's floor never sees the Sun or Earth, and Chang'e 4 on the far side never sees Earth.</p></div></div>
   </div>
 </section>
 
@@ -369,16 +395,17 @@ footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;
 
 <script>
 const frames = [
-  {img:'img/focus-terrain.png', t:'SOUTH POLAR TERRAIN', c:'LOLA 80 m relief at Connecting Ridge: Sun 3.0° above the skyline, Earth hidden, next DSN contact in 1 d 19 h.', tt:'SITE'},
+  {img:'img/feat-terrain.jpg', t:'SOUTH POLAR TERRAIN', c:'LOLA 80 m relief at Connecting Ridge: Sun 3.0° above the skyline, Earth hidden, next DSN contact in 1 d 19 h.', tt:'SITE'},
   {img:'img/mp-pad.jpg', t:'LAUNCH · ON THE PAD', c:'Apollo 11 Saturn V at Kennedy Space Center LC-39, 1969-07-16.', tt:'T+0'},
   {img:'img/mp-hero.jpg', t:'ASCENT · CINEMATIC CAMERA', c:'S-IC first stage burning: live speed, altitude and Earth/Moon distance.', tt:'T+00:01:48'},
   {img:'img/mp-coast.jpg', t:'TRANSLUNAR COAST · ORBIT VIEW', c:'The whole reconstructed Earth–Moon trajectory at true positions.', tt:'T+1D 18H'},
   {img:'img/mp-solar.jpg', t:'SUN–EARTH–MOON SCALE', c:'Zoom out to the heliocentric frame without losing the spacecraft.', tt:'T+1D 18H'},
   {img:'img/mp-orbit.jpg', t:'LUNAR ORBIT', c:'Command and service module with the Lunar Module docked, 100 km above the Moon.', tt:'T+3D 17H'},
   {img:'img/mp-descent.jpg', t:'POWERED DESCENT', c:'Lunar Module descending toward the landing site.', tt:'T+4D 06H'},
-  {img:'img/explore.png', t:'SITE ANALYSIS · EXPLORE', c:'Globe, horizon scope and a plain-language mission brief for the landing site.', tt:'LANDED'},
-  {img:'img/compare.png', t:'COMPARE SITES', c:'Sunlight, Earth in view, DSN contact, power and energy for several sites side by side.', tt:'PLAN'},
-  {img:'img/date-finder.png', t:'DATE FINDER', c:'Every landing date scored; the best ones ranked for the selected site.', tt:'PLAN'},
+  {img:'img/feat-globe.jpg', t:'SITE ANALYSIS · GLOBE', c:'Day/night line, Earth-visibility limit and the landing site on the Moon.', tt:'LANDED'},
+  {img:'img/obj-horizon.jpg', fit:1, t:'HORIZON SCOPE', c:'Sun and Earth against the real LOLA skyline at the site, at true scale.', tt:'SURFACE'},
+  {img:'img/obj-compare.jpg', fit:1, t:'COMPARE SITES', c:'Sunlight, Earth in view, DSN contact, power and energy for several sites side by side.', tt:'PLAN'},
+  {img:'img/obj-dates.jpg', fit:1, t:'DATE FINDER', c:'Every landing date scored; the best ones ranked for the selected site.', tt:'PLAN'},
 ];
 const phases = [
   {h:'1. BRIEF', p:'What CELESTE is', go:'#brief', f:0, tag:'Ready'},
@@ -408,7 +435,8 @@ function show(k) {
   i = (k + frames.length) % frames.length;
   const f = frames[i], img = $('#frame');
   img.style.opacity = 0;
-  setTimeout(() => { img.src = f.img; img.alt = f.t; img.style.opacity = 1; }, 180);
+  setTimeout(() => { img.src = f.img; img.alt = f.t; img.classList.toggle('contain', !!f.fit); img.classList.remove('in'); void img.offsetWidth; img.classList.add('in'); img.style.opacity = 1; }, 180);
+  $('#play').classList.toggle('on', playing);
   $('#ttl').textContent = f.t; $('#cap').textContent = f.c;
   const pct = (i / (frames.length - 1)) * 100;
   $('#fill').style.width = pct + '%'; $('#thumb').style.left = pct + '%';
@@ -455,6 +483,22 @@ function loadApp() {
   f.hidden = false; $('#loadApp').textContent = 'APP LOADED ✓';
 }
 $('#loadApp').onclick = loadApp;
+$('#runHere').onclick = () => { loadApp(); $('#launch').scrollIntoView(); };
+
+// scroll reveal
+document.querySelectorAll('section').forEach((s) => s.classList.add('reveal'));
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('vis'); countUp(e.target); io.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((s) => io.observe(s));
+
+// count-up for stat numbers
+function countUp(root) {
+  root.querySelectorAll('.stat b').forEach((b) => {
+    const txt = b.textContent, m = txt.match(/^([\d.]+)(.*)$/); if (!m) return;
+    const end = parseFloat(m[1]), dec = (m[1].split('.')[1] || '').length, t0 = performance.now();
+    const step = (t) => { const k = Math.min(1, (t - t0) / 1200); b.textContent = (end * (1 - Math.pow(1 - k, 3))).toFixed(dec) + m[2]; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}
 
 // lightbox
 document.querySelectorAll('.card img').forEach((im) => im.onclick = () => { $('#lb img').src = im.src; $('#lb').classList.add('on'); });
