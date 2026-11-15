@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CELESTE · Lunar Landing Site Navigator</title>
+<meta name="description" content="CELESTE: Lunar Landing Site Navigator by team orbitalhackers, NASA Space Apps Challenge 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --space:#0b0d12; --bezel:#d9d3c4; --bezel2:#c9c2b1; --bezel3:#b5ad9a; --edge:#8f887a;
+  --ink:#2a2620; --ink2:#5d574c; --screen:#0d1420; --screen2:#121b29; --line:#273246;
+  --orange:#ff7a45; --amber:#ffab2e; --green:#5fd38d; --red:#ff5a4a; --cyan:#56c4ff; --cream:#ece6d6;
+  --mono:'Share Tech Mono',Consolas,monospace; --head:'Barlow Condensed','Bahnschrift',sans-serif; --body:'Barlow','Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#1a2030 0%,var(--space) 60%);color:var(--ink);font-family:var(--body);min-height:100vh}
+a{color:inherit}
+.wrap{max-width:1400px;margin:0 auto;padding:24px 16px 60px}
+
+/* ---------- console shell ---------- */
+.console{background:linear-gradient(180deg,#e2dccd,#cfc8b6);border-radius:22px;padding:14px;border:2px solid var(--edge);
+  box-shadow:inset 0 2px 0 #f4efe3,inset 0 -3px 0 #a39b88,0 30px 80px rgba(0,0,0,.6);position:relative}
+.screw{position:absolute;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#eee,#888);border:1px solid #6d675b}
+.screw::after{content:"";position:absolute;left:2px;right:2px;top:6px;height:2px;background:#555;transform:rotate(35deg)}
+.s1{top:10px;left:10px}.s2{top:10px;right:10px}.s3{bottom:10px;left:10px}.s4{bottom:10px;right:10px}
+.panel{background:linear-gradient(180deg,#e7e1d3,#d6cfbe);border:1px solid var(--bezel3);border-radius:12px;box-shadow:inset 0 1px 0 #f7f2e7,0 2px 4px rgba(0,0,0,.15)}
+.plabel{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:6px 8px;background:#cbc4b2;border-bottom:1px solid var(--bezel3);border-radius:12px 12px 0 0;color:var(--ink)}
+
+/* top bar */
+.top{display:grid;grid-template-columns:auto auto 1fr auto auto;gap:18px;align-items:center;padding:6px 26px 14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:40px;height:40px}
+.logo b{font-family:var(--head);font-size:30px;letter-spacing:.08em;color:#efe9dc;text-shadow:0 1px 0 #8a8270,0 -1px 0 #fff;-webkit-text-stroke:1px #8f887a;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink2)}
+.lamps{display:flex;gap:6px;padding:6px;background:#a9a18d;border-radius:8px;border:1px solid #7f7867}
+.lamp{width:26px;height:26px;border-radius:5px;border:1px solid #444;cursor:pointer;transition:.15s;background:#555}
+.lamp.on.w{background:#fff8e6;box-shadow:0 0 12px #fff2c8}.lamp.on.y{background:var(--amber);box-shadow:0 0 12px var(--amber)}.lamp.on.r{background:var(--red);box-shadow:0 0 12px var(--red)}
+.status{display:flex;gap:22px;justify-content:center;background:#141820;border:2px solid #6b6556;border-radius:8px;padding:8px 18px;font-family:var(--mono);font-size:15px;color:#c8cfd8;flex-wrap:wrap}
+.status span b{font-weight:400;color:var(--amber)} .status .ok b{color:var(--green)}
+.status i{display:block;height:3px;border-radius:2px;background:currentColor;margin-bottom:4px;width:28px;opacity:.9}
+.switches{display:flex;gap:16px}
+.sw{display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--mono);font-size:12px;color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
+.sw .t{width:26px;height:40px;border-radius:13px;background:linear-gradient(90deg,#999,#eee,#999);border:1px solid #555;position:relative}
+.sw .t::after{content:"";position:absolute;left:5px;width:14px;height:20px;border-radius:7px;background:linear-gradient(90deg,#666,#ccc,#666);top:2px;transition:.15s}
+.sw.on .t::after{top:16px}
+.gh{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--mono);font-size:13px;background:#1b1f27;color:var(--cream);padding:9px 14px;border-radius:8px;border:1px solid #000}
+.gh:hover{background:#262c37}
+
+/* main grid */
+.main{display:grid;grid-template-columns:260px 1fr 280px;gap:14px}
+.log{display:flex;flex-direction:column}
+.log .items{padding:10px;display:flex;flex-direction:column;gap:10px}
+.phase{background:linear-gradient(180deg,#f2ede2,#e2dccd);border:1px solid var(--bezel3);border-radius:10px;padding:10px 12px;cursor:pointer;text-align:left;font:inherit;color:inherit;position:relative;transition:.12s}
+.phase:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.15)}
+.phase.active{outline:2px solid var(--orange)}
+.phase h4{margin:0;font-family:var(--mono);font-weight:400;font-size:15px;letter-spacing:.05em}
+.phase p{margin:2px 0 8px;font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.phase .dot{position:absolute;right:12px;top:12px;width:13px;height:13px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.phase .tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 9px;border-radius:9px;background:#5f8f5a;color:#fff}
+.phase .tag.a{background:var(--orange)}
+
+.crt{align-self:start;background:#504a3f;border-radius:16px;padding:12px;box-shadow:inset 0 2px 8px rgba(0,0,0,.6)}
+.screen{position:relative;background:var(--screen);border-radius:10px;overflow:hidden;aspect-ratio:16/9;border:2px solid #000;box-shadow:inset 0 0 40px rgba(0,0,0,.8)}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.screen .ttl{position:absolute;left:16px;top:12px;font-family:var(--mono);font-size:16px;letter-spacing:.08em;color:var(--cream);text-shadow:0 1px 3px #000;background:rgba(10,14,20,.6);padding:4px 10px;border-radius:4px}
+.screen .cap{position:absolute;left:16px;bottom:12px;right:16px;font-family:var(--mono);font-size:13px;color:var(--cream);background:rgba(10,14,20,.72);padding:6px 10px;border-radius:4px}
+.screen .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(86,196,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(86,196,255,.12) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.screen .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none}
+.vopts{position:absolute;right:12px;top:12px;background:rgba(14,20,30,.88);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-family:var(--mono);font-size:12px;color:var(--cream);min-width:170px}
+.vopts h5{margin:0 0 6px;font-weight:400;font-size:13px;text-align:right;letter-spacing:.06em}
+.tog{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:5px 0;cursor:pointer}
+.tog input{display:none}
+.tog .k{width:30px;height:15px;border-radius:8px;background:#555;position:relative;transition:.15s}
+.tog .k::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:#ddd;top:2px;left:2px;transition:.15s}
+.tog input:checked+.k{background:#c96a2e}.tog input:checked+.k::after{left:17px}
+
+.tele{display:flex;flex-direction:column;gap:14px}
+.mod .in{margin:10px;background:linear-gradient(180deg,#efe9dd,#ddd6c5);border:1px solid var(--bezel3);border-radius:8px;padding:10px;text-align:center}
+.mod h3{margin:0;font-family:var(--mono);font-weight:400;font-size:17px;letter-spacing:.05em}
+.mod small{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:.05em}
+.bars{display:flex;align-items:flex-end;gap:3px;height:62px;background:#2a1d10;border-radius:5px;padding:6px;margin:8px 0;border:2px solid #111}
+.bars i{flex:1;background:#5a3a17;border-radius:1px}.bars i.on{background:linear-gradient(0deg,#ff8a2a,#ffc65a);box-shadow:0 0 6px rgba(255,150,40,.6)}
+.lcd{font-family:var(--mono);background:#1c1309;color:var(--amber);border:2px solid #111;border-radius:5px;padding:6px 10px;font-size:22px;text-shadow:0 0 8px rgba(255,171,46,.6)}
+.bigbtn{display:block;width:100%;margin-top:8px;font-family:var(--mono);font-size:14px;letter-spacing:.08em;padding:9px;border-radius:7px;cursor:pointer;border:1px solid #8e8673;background:linear-gradient(180deg,#f6f1e6,#d8d1c0);color:var(--ink);text-decoration:none}
+.bigbtn:hover{filter:brightness(1.05)}
+.bigbtn.go{background:linear-gradient(180deg,#ff9a66,#e5602b);color:#fff;border-color:#a8441b;text-shadow:0 1px 0 #943a15}
+.gauge{width:170px;height:96px;margin:6px auto 0;border-radius:96px 96px 0 0;background:#1e140a;border:3px solid #111;position:relative;overflow:hidden}
+.gauge::before{content:"";position:absolute;inset:8px 8px 0;border-radius:90px 90px 0 0;border:3px dashed #ff8a2a;border-bottom:0;opacity:.6}
+.gauge div{position:absolute;bottom:8px;left:0;right:0;font-family:var(--mono);color:var(--amber);font-size:13px;text-shadow:0 0 6px rgba(255,171,46,.6)}
+.gauge div b{display:block;font-size:20px;font-weight:400}
+
+/* bottom timeline */
+.bottom{margin-top:14px}
+.bottom .row{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:14px 20px;align-items:center}
+.knobs{display:flex;gap:18px;align-items:center}
+.knob{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#f4efe3,#a49c88);border:2px solid #6c6556;position:relative;cursor:grab;box-shadow:0 3px 6px rgba(0,0,0,.3)}
+.knob::after{content:"";position:absolute;width:4px;height:18px;background:#333;left:28px;top:6px;border-radius:2px}
+.tl h5{margin:0 0 8px;font-family:var(--mono);font-weight:400;font-size:15px;letter-spacing:.06em;display:flex;justify-content:space-between}
+.track{position:relative;height:16px;background:#2a2620;border-radius:8px;border:1px solid #000;cursor:pointer}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:linear-gradient(90deg,#e5602b,#ffab2e)}
+.thumb{position:absolute;top:-6px;width:18px;height:28px;margin-left:-9px;border-radius:4px;background:linear-gradient(180deg,#ffb27c,#d95a24);border:1px solid #7c3210}
+.ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.ticks button{background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:0}
+.ticks button.on{color:var(--orange)}
+.ctrls{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.cb{font-family:var(--mono);font-size:13px;min-width:46px;height:36px;padding:0 12px;border-radius:7px;border:1px solid #8e8673;background:linear-gradient(180deg,#f6f1e6,#d8d1c0);cursor:pointer;color:var(--ink)}
+.cb.stop{background:linear-gradient(180deg,#ff8e7a,#e24b36);color:#fff;border-color:#9c2b1c}
+.cur{margin-left:auto;font-family:var(--mono);background:#141820;color:var(--cream);border:2px solid #6b6556;border-radius:6px;padding:6px 12px;font-size:14px}
+.cur b{color:var(--amber);font-weight:400}
+
+/* ---------- content sections (screen-styled) ---------- */
+section{margin-top:28px}
+.sec{background:var(--screen2);border:1px solid var(--line);border-radius:16px;padding:28px;color:#d5dbe4}
+.sec h2{font-family:var(--head);font-weight:700;font-size:34px;color:var(--cream);margin:0 0 6px;letter-spacing:.02em}
+.kick{font-family:var(--mono);color:var(--orange);font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.sec p{line-height:1.6;max-width:75ch}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px}
+.card{background:#0f1622;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:zoom-in}
+.card div{padding:14px 16px}
+.card h3{margin:0 0 4px;font-family:var(--head);font-size:22px;color:var(--cream)}
+.card p{margin:0;font-size:15px;color:#aab3c0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:18px}
+.stat b{display:block;font-family:var(--head);font-size:44px;color:var(--amber)}
+.stat span{font-size:14px;color:#9aa4b2}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
+.mem{display:flex;align-items:center;gap:12px;background:#0f1622;border:1px solid var(--line);border-radius:12px;padding:14px}
+.mem i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--mono);border:2px solid var(--orange);color:var(--cream)}
+.mem b{color:var(--cream);font-size:18px;font-weight:500}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.chip{font-family:var(--mono);font-size:13px;border:1px solid var(--line);border-radius:6px;padding:7px 12px;background:#0f1622}
+.chip b{color:var(--amber);font-weight:400}
+.appframe{margin-top:16px;border:2px solid #000;border-radius:12px;overflow:hidden;background:#000;height:min(80vh,860px)}
+.appframe iframe{width:100%;height:100%;border:0;display:block}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btnrow a{width:auto;display:inline-block;padding:11px 18px}
+table{border-collapse:collapse;width:100%;margin-top:14px;font-size:15px}
+td,th{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{font-family:var(--mono);font-weight:400;color:var(--orange);font-size:13px;letter-spacing:.08em}
+td:first-child{color:var(--cream);white-space:nowrap}
+footer{margin-top:30px;text-align:center;font-family:var(--mono);font-size:12px;color:#7c8594}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;place-items:center;z-index:50;cursor:zoom-out;padding:16px}
+.lb.on{display:grid}.lb img{max-width:100%;max-height:92vh;border-radius:8px}
+
+@media (max-width:1100px){.main{grid-template-columns:1fr}.top{grid-template-columns:1fr;justify-items:center}.log .items{flex-direction:row;overflow-x:auto}.phase{min-width:200px}.tele{flex-direction:row;flex-wrap:wrap}.tele>*{flex:1;min-width:240px}}
+@media (max-width:640px){.bottom .row{grid-template-columns:1fr}.knobs{display:none}.vopts{display:none}.sec{padding:18px}.status{font-size:12px;gap:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ================= CONSOLE ================= -->
+<div class="console" id="top">
+  <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
+
+  <div class="top">
+    <a class="logo" href="#top" aria-label="CELESTE home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="#8f887a" stroke-width="2.5"/><path d="M20 3a17 17 0 0 0 0 34a11 17 0 0 1 0-34z" fill="#2a2620"/><circle cx="31" cy="11" r="3" fill="#ff7a45"/></svg>
+      <span><b>CELESTE</b><small>MISSION CONTROL</small></span>
+    </a>
+    <div class="lamps" title="Click the lamps">
+      <button class="lamp w on" aria-label="white lamp"></button><button class="lamp y on" aria-label="amber lamp"></button><button class="lamp r on" aria-label="red lamp"></button>
+    </div>
+    <div class="status" id="status">
+      <span><i style="color:var(--amber)"></i>PWR: <b>ON</b></span>
+      <span class="ok"><i style="color:var(--green)"></i>COMM: <b id="comm">STABLE</b></span>
+      <span class="ok"><i style="color:var(--green)"></i>SYS: <b id="sys">READY</b></span>
+    </div>
+    <div class="switches">
+      <button class="sw" data-go="#brief"><span class="t"></span>NAV</button>
+      <button class="sw" data-go="#mission"><span class="t"></span>PLAN</button>
+      <button class="sw" data-go="#launch"><span class="t"></span>EXECUTE</button>
+    </div>
+    <a class="gh" href="https://github.com/DeadFromInside-skibidi/CELESTE" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      GITHUB
+    </a>
+  </div>
+
+  <div class="main">
+    <!-- mission phase log -->
+    <div class="panel log">
+      <div class="plabel">Mission Phase Log</div>
+      <div class="items" id="log"></div>
+    </div>
+
+    <!-- center screen -->
+    <div class="crt">
+      <div class="screen" id="screen">
+        <img id="frame" src="img/focus-terrain.png" alt="">
+        <div class="grid" id="gridL" hidden></div>
+        <div class="scan" id="scanL"></div>
+        <div class="ttl" id="ttl">SOUTH POLAR TERRAIN</div>
+        <div class="vopts">
+          <h5>VIEW OPTIONS</h5>
+          <label class="tog">CAPTIONS<input type="checkbox" id="optCap" checked><span class="k"></span></label>
+          <label class="tog">LABELS<input type="checkbox" id="optLbl" checked><span class="k"></span></label>
+          <label class="tog">GRID<input type="checkbox" id="optGrid"><span class="k"></span></label>
+          <label class="tog">SCANLINES<input type="checkbox" id="optScan" checked><span class="k"></span></label>
+        </div>
+        <div class="cap" id="cap"></div>
+      </div>
+    </div>
+
+    <!-- telemetry -->
+    <div class="tele">
+      <div class="panel mod">
+        <div class="plabel">Telemetry Module</div>
+        <div class="in">
+          <h3>HORIZONS ACCURACY</h3>
+          <small>WORST-CASE ERROR · 1,620 SAMPLES</small>
+          <div class="bars" id="bars"></div>
+          <div class="lcd">0.0045°</div>
+          <a class="bigbtn go" href="app/" target="_blank" rel="noopener">▶ LAUNCH APP</a>
+        </div>
+      </div>
+      <div class="panel mod">
+        <div class="plabel">Telemetry Module</div>
+        <div class="in">
+          <h3>MISSION CATALOGUE</h3>
+          <small>LUNAR MISSIONS ON FILE · 1958–2026</small>
+          <div class="gauge"><div>FLIGHTS<b id="cnt">104</b></div></div>
+          <a class="bigbtn" href="#launch">RUN IN BROWSER</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- timeline scrubber -->
+  <div class="panel bottom">
+    <div class="plabel" style="text-align:left;padding-left:20px">Timeline Scrubber</div>
+    <div class="row">
+      <div class="knobs">
+        <button class="sw" id="swNav"><span class="t"></span>AUTO</button>
+        <div style="text-align:center;font-family:var(--mono);font-size:12px"><div class="knob" id="knob" title="Drag or click to change speed"></div>SPEED</div>
+      </div>
+      <div class="tl">
+        <h5><span>MISSION TIMELINE · APOLLO 11 → SITE ANALYSIS</span><span id="spd">SPEED: 1×</span></h5>
+        <div class="track" id="track"><div class="fill" id="fill"></div><div class="thumb" id="thumb"></div></div>
+        <div class="ticks" id="ticks"></div>
+        <div class="ctrls">
+          <button class="cb" id="play">▶ ❚❚</button>
+          <button class="cb stop" id="stop">■</button>
+          <button class="cb" id="back">◀ STEP</button>
+          <button class="cb" id="fwd">STEP ▶</button>
+          <button class="cb" id="speed">⟲ 1×</button>
+          <div class="cur">FRAME: <b id="curN">01</b> / <span id="totN">10</span> · <b id="curT">T+0</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= BRIEF ================= -->
+<section id="brief" class="sec">
+  <div class="kick">01 · Project brief</div>
+  <h2>CELESTE: Lunar Landing Site Navigator</h2>
+  <p>Pick a landing site and a date. CELESTE shows where the Sun and the Earth are against the site's real terrain horizon, how long until sunset or Earthset, which Deep Space Network antenna can reach it, and how a mission starting then compares with other sites or other dates.</p>
+  <p>At the lunar south pole the Sun skims the horizon. A few kilometres can mean constant light or weeks of darkness, and Earth can drop behind a crater rim. CELESTE makes that visible in seconds, for mission planners, students and the public, with no installation, no server and no API keys.</p>
+  <div class="chips">
+    <span class="chip">TEAM <b>orbitalhackers</b></span>
+    <span class="chip">CHALLENGE <b>Lunar Landing Site Navigator</b></span>
+    <span class="chip">EVENT <b>NASA Space Apps Challenge 2026 · Universal Event</b></span>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>39</b><span>curated landing sites, incl. all 13 Artemis III regions</span></div>
+    <div class="stat"><b>104</b><span>lunar missions you can fly, launch to landing</span></div>
+    <div class="stat"><b>0.0045°</b><span>worst-case error vs NASA/JPL Horizons</span></div>
+    <div class="stat"><b>43</b><span>automated validation and physics checks</span></div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section id="features" class="sec">
+  <div class="kick">02 · Features</div>
+  <h2>One Moon, three ways to look at it</h2>
+  <div class="cards">
+    <div class="card"><img src="img/explore.png" alt="Explore mode with globe, horizon scope and briefing"><div><h3>Moon globe</h3><p>Day/night line, Earth-visibility limit, and a plain-language briefing. Double-click anywhere to drop a custom site.</p></div></div>
+    <div class="card"><img src="img/focus-terrain.png" alt="South polar terrain"><div><h3>Polar terrain</h3><p>NASA LOLA 80 m relief of the south pole (7600 × 7600 samples) with GPU ray-marched shadows on a 4096² map.</p></div></div>
+    <div class="card"><img src="img/mission-control.png" alt="Mission control mode"><div><h3>Mission overview</h3><p>Focus, Explore and Mission control modes: trackers, DSN stations, solar power, event reports and CSV export.</p></div></div>
+  </div>
+</section>
+
+<!-- ================= OBJECTIVES ================= -->
+<section id="objectives" class="sec">
+  <div class="kick">03 · How we solved the objectives</div>
+  <h2>Every challenge objective, answered on screen</h2>
+  <div class="cards">
+    <div class="card"><img src="img/compare.png" alt="Compare sites"><div><h3>Choose and compare sites</h3><p>39 curated sites or any coordinate; up to five side by side on sunlight, Earth view, DSN contact and energy.</p></div></div>
+    <div class="card"><img src="img/date-finder.png" alt="Date finder"><div><h3>Any date, 1960 to 2100</h3><p>Scrub or play from 10 min/s to 5 days/s. The date finder scores every landing date and ranks the best.</p></div></div>
+    <div class="card"><img src="img/explore.png" alt="Horizon scope"><div><h3>Sun and Earth on the real horizon</h3><p>360° LOLA skyline (1,440 rays to 350 km), both disks at true scale, countdowns to sunset and Earthset.</p></div></div>
+    <div class="card"><img src="img/events.png" alt="Event reports"><div><h3>Power and communication</h3><p>Solar elevation, visible disk, irradiance and kWh for three array types; line of sight to Goldstone, Madrid and Canberra.</p></div></div>
+    <div class="card"><img src="img/mission-light.png" alt="Mission illumination map"><div><h3>Why metres matter</h3><p>The mission-illumination map drops from ~100% to 0% sunlit within a few km. The mast switch shows what 8 m buys.</p></div></div>
+    <div class="card"><img src="img/12-shackleton-floor.png" alt="Shackleton crater floor"><div><h3>Physically checked</h3><p>Tests confirm Shackleton's floor never sees the Sun or Earth, and Chang'e 4 on the far side never sees Earth.</p></div></div>
+  </div>
+</section>
+
+<!-- ================= MISSION PLANNING ================= -->
+<section id="mission" class="sec">
+  <div class="kick">04 · Mission planning</div>
+  <h2>From launch pad to landing site, in 3D</h2>
+  <p>Pick any of 104 lunar missions and fly it: liftoff, parking orbit, translunar coast, lunar orbit, descent and touchdown, with stage separation, engine plumes and live speed, altitude and distances. Switch between Overview, Earth, Moon, Follow and Cinematic cameras, 3D or 2D plan, Earth–Moon or Sun–Earth–Moon scale, then jump to the landing site for its sunlight, Earth and DSN analysis.</p>
+  <div class="cards">
+    <div class="card"><img src="img/mp-hero.jpg" alt="Saturn V ascent"><div><h3>Ascent · cinematic</h3><p>Saturn V (NASA 3D model) climbing out of Kennedy LC-39.</p></div></div>
+    <div class="card"><img src="img/mp-coast.jpg" alt="Translunar coast"><div><h3>Orbit view</h3><p>The whole Earth–Moon trajectory at true positions.</p></div></div>
+    <div class="card"><img src="img/mp-orbit.jpg" alt="Lunar orbit"><div><h3>Lunar orbit</h3><p>CSM with the Lunar Module docked, 100 km above the Moon.</p></div></div>
+    <div class="card"><img src="img/mp-descent.jpg" alt="Powered descent"><div><h3>Powered descent</h3><p>Lunar Module on its way to Tranquility Base.</p></div></div>
+  </div>
+  <p style="font-size:14px;color:#8a94a3">Trajectories are reconstructed from launch site, dates and landing site: they show the shape and timing of each flight, not the flown path.</p>
+</section>
+
+<!-- ================= DATA ================= -->
+<section id="data" class="sec">
+  <div class="kick">05 · NASA & space-agency data</div>
+  <h2>Made possible by NASA open data</h2>
+  <table>
+    <tr><th>SOURCE</th><th>WHAT IT POWERS</th></tr>
+    <tr><td>LRO LOLA elevation · NASA PDS Geosciences</td><td>Terrain, skylines and shadows from eight LOLA grids (10 m to 1.9 km)</td></tr>
+    <tr><td>South-pole LOLA sites · NASA GSFC PGDA</td><td>High-resolution products behind the south-pole site list (Barker et al. 2021)</td></tr>
+    <tr><td>JPL Horizons · DE441</td><td>Ground truth for every Sun and Earth angle; spacecraft paths in the flight view</td></tr>
+    <tr><td>DSN Handbook 810-005 · NASA/JPL</td><td>Goldstone, Madrid and Canberra antenna positions</td></tr>
+    <tr><td>CGI Moon Kit · NASA Goddard SVS</td><td>LROC WAC colour and LOLA relief textures for the globe</td></tr>
+    <tr><td>Moon Trek · NASA/JPL</td><td>LROC WAC 100 m imagery around landing sites</td></tr>
+    <tr><td>Blue Marble + GIBS · NASA EOSDIS</td><td>Earth globe and Landsat imagery of launch sites</td></tr>
+    <tr><td>NASA 3D Resources</td><td>Saturn V, Lunar Module, LRO, LADEE and Clementine models</td></tr>
+    <tr><td>NSSDCA lunar timeline</td><td>104-mission catalogue and landing coordinates</td></tr>
+  </table>
+  <p style="font-size:14px;color:#8a94a3">Also linked in the app: LROC QuickMap, NASA Moon Trek and the CSA Moon exploration portal. The site list includes ISRO, JAXA and CNSA landers.</p>
+</section>
+
+<!-- ================= LAUNCH ================= -->
+<section id="launch" class="sec">
+  <div class="kick">06 · Run it</div>
+  <h2>Launch CELESTE in your browser</h2>
+  <p>The full app runs right here, nothing to install. For the best experience (keyboard shortcuts, full GPU terrain), open it full screen. Keys: <b>1</b> Focus · <b>2</b> Explore · <b>3</b> Mission control · <b>G</b> globe · <b>F</b> flight · <b>O</b> orrery.</p>
+  <div class="btnrow">
+    <a class="bigbtn go" href="app/" target="_blank" rel="noopener">▶ OPEN FULL SCREEN</a>
+    <button class="bigbtn" id="loadApp" style="width:auto">LOAD EMBEDDED APP BELOW</button>
+    <a class="bigbtn" href="https://github.com/DeadFromInside-skibidi/CELESTE" target="_blank" rel="noopener">SOURCE ON GITHUB</a>
+  </div>
+  <div class="appframe" id="appframe" hidden></div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section id="team" class="sec">
+  <div class="kick">07 · Team & challenge</div>
+  <h2>Team orbitalhackers</h2>
+  <div class="team">
+    <div class="mem"><i>RG</i><b>Rudra Garg</b></div>
+    <div class="mem"><i style="border-color:var(--amber)">SM</i><b>Saumya Mishra</b></div>
+    <div class="mem"><i style="border-color:var(--cyan)">AS</i><b>Ankush Sharma</b></div>
+    <div class="mem"><i style="border-color:var(--green)">TV</i><b>Tanmay Vats</b></div>
+    <div class="mem"><i style="border-color:var(--cream)">SR</i><b>Sourin Roy</b></div>
+  </div>
+  <div class="chips">
+    <span class="chip">CHALLENGE <b>Lunar Landing Site Navigator</b></span>
+    <span class="chip">EVENT <b>Universal Event · Anywhere in the World</b></span>
+    <span class="chip">REPO <b><a href="https://github.com/DeadFromInside-skibidi/CELESTE" target="_blank" rel="noopener">github.com/DeadFromInside-skibidi/CELESTE</a></b></span>
+  </div>
+</section>
+
+<footer>CELESTE · LUNAR LANDING SITE NAVIGATOR · TEAM ORBITALHACKERS · NASA SPACE APPS CHALLENGE 2026</footer>
+</div>
+
+<div class="lb" id="lb"><img alt=""></div>
+
+<script>
+const frames = [
+  {img:'img/focus-terrain.png', t:'SOUTH POLAR TERRAIN', c:'LOLA 80 m relief at Connecting Ridge: Sun 3.0° above the skyline, Earth hidden, next DSN contact in 1 d 19 h.', tt:'SITE'},
+  {img:'img/mp-pad.jpg', t:'LAUNCH · ON THE PAD', c:'Apollo 11 Saturn V at Kennedy Space Center LC-39, 1969-07-16.', tt:'T+0'},
+  {img:'img/mp-hero.jpg', t:'ASCENT · CINEMATIC CAMERA', c:'S-IC first stage burning: live speed, altitude and Earth/Moon distance.', tt:'T+00:01:48'},
+  {img:'img/mp-coast.jpg', t:'TRANSLUNAR COAST · ORBIT VIEW', c:'The whole reconstructed Earth–Moon trajectory at true positions.', tt:'T+1D 18H'},
+  {img:'img/mp-solar.jpg', t:'SUN–EARTH–MOON SCALE', c:'Zoom out to the heliocentric frame without losing the spacecraft.', tt:'T+1D 18H'},
+  {img:'img/mp-orbit.jpg', t:'LUNAR ORBIT', c:'Command and service module with the Lunar Module docked, 100 km above the Moon.', tt:'T+3D 17H'},
+  {img:'img/mp-descent.jpg', t:'POWERED DESCENT', c:'Lunar Module descending toward the landing site.', tt:'T+4D 06H'},
+  {img:'img/explore.png', t:'SITE ANALYSIS · EXPLORE', c:'Globe, horizon scope and a plain-language mission brief for the landing site.', tt:'LANDED'},
+  {img:'img/compare.png', t:'COMPARE SITES', c:'Sunlight, Earth in view, DSN contact, power and energy for several sites side by side.', tt:'PLAN'},
+  {img:'img/date-finder.png', t:'DATE FINDER', c:'Every landing date scored; the best ones ranked for the selected site.', tt:'PLAN'},
+];
+const phases = [
+  {h:'1. BRIEF', p:'What CELESTE is', go:'#brief', f:0, tag:'Ready'},
+  {h:'2. FEATURES', p:'Globe · terrain · overview', go:'#features', f:7, tag:'Ready'},
+  {h:'3. OBJECTIVES', p:'Challenge coverage', go:'#objectives', f:8, tag:'Ready'},
+  {h:'4. MISSION PLAN', p:'Launch to landing', go:'#mission', f:2, tag:'Active', a:1},
+  {h:'5. NASA DATA', p:'Sources & validation', go:'#data', f:9, tag:'Ready'},
+  {h:'6. LAUNCH APP', p:'Run in browser', go:'#launch', f:7, tag:'Go', a:1},
+  {h:'7. TEAM', p:'orbitalhackers', go:'#team', f:0, tag:'Ready'},
+];
+const $ = (s) => document.querySelector(s);
+let i = 0, playing = true, speed = 1, timer = null;
+
+// phase log
+$('#log').innerHTML = phases.map((p, k) => `<button class="phase" data-k="${k}"><span class="dot" style="${p.a ? 'background:var(--amber);box-shadow:0 0 6px var(--amber)' : ''}"></span><h4>${p.h}</h4><p>${p.p}</p><span class="tag ${p.a ? 'a' : ''}">${p.tag}</span></button>`).join('');
+document.querySelectorAll('.phase').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.phase').forEach((x) => x.classList.remove('active')); b.classList.add('active');
+  const p = phases[b.dataset.k]; show(p.f); document.querySelector(p.go).scrollIntoView();
+});
+
+// ticks
+$('#ticks').innerHTML = frames.map((f, k) => `<button data-k="${k}" title="${f.t}">${String(k + 1).padStart(2, '0')}</button>`).join('');
+document.querySelectorAll('#ticks button').forEach((b) => b.onclick = () => show(+b.dataset.k));
+$('#totN').textContent = frames.length;
+
+function show(k) {
+  i = (k + frames.length) % frames.length;
+  const f = frames[i], img = $('#frame');
+  img.style.opacity = 0;
+  setTimeout(() => { img.src = f.img; img.alt = f.t; img.style.opacity = 1; }, 180);
+  $('#ttl').textContent = f.t; $('#cap').textContent = f.c;
+  const pct = (i / (frames.length - 1)) * 100;
+  $('#fill').style.width = pct + '%'; $('#thumb').style.left = pct + '%';
+  $('#curN').textContent = String(i + 1).padStart(2, '0'); $('#curT').textContent = f.tt;
+  document.querySelectorAll('#ticks button').forEach((b, n) => b.classList.toggle('on', n === i));
+}
+function schedule() { clearInterval(timer); if (playing) timer = setInterval(() => show(i + 1), 4000 / speed); $('#swNav').classList.toggle('on', playing); }
+$('#play').onclick = () => { playing = !playing; schedule(); };
+$('#stop').onclick = () => { playing = false; schedule(); show(0); };
+$('#back').onclick = () => { show(i - 1); };
+$('#fwd').onclick = () => { show(i + 1); };
+$('#swNav').onclick = () => { playing = !playing; schedule(); };
+const speeds = [1, 2, 4, 0.5];
+function cycleSpeed() { speed = speeds[(speeds.indexOf(speed) + 1) % speeds.length]; $('#speed').textContent = '⟲ ' + speed + '×'; $('#spd').textContent = 'SPEED: ' + speed + '×'; $('#knob').style.transform = `rotate(${speeds.indexOf(speed) * 70 - 70}deg)`; schedule(); }
+$('#speed').onclick = cycleSpeed; $('#knob').onclick = cycleSpeed;
+$('#track').onclick = (e) => { const r = e.currentTarget.getBoundingClientRect(); show(Math.round(((e.clientX - r.left) / r.width) * (frames.length - 1))); };
+
+// view options
+$('#optCap').onchange = (e) => $('#cap').hidden = !e.target.checked;
+$('#optLbl').onchange = (e) => $('#ttl').hidden = !e.target.checked;
+$('#optGrid').onchange = (e) => $('#gridL').hidden = !e.target.checked;
+$('#optScan').onchange = (e) => $('#scanL').hidden = !e.target.checked;
+
+// top switches & lamps
+document.querySelectorAll('.switches .sw').forEach((s) => s.onclick = () => {
+  document.querySelectorAll('.switches .sw').forEach((x) => x.classList.remove('on')); s.classList.add('on');
+  document.querySelector(s.dataset.go).scrollIntoView();
+  if (s.dataset.go === '#launch') loadApp();
+});
+document.querySelectorAll('.lamp').forEach((l) => l.onclick = () => {
+  l.classList.toggle('on');
+  const n = document.querySelectorAll('.lamp.on').length;
+  $('#sys').textContent = n === 3 ? 'READY' : n ? 'STANDBY' : 'OFFLINE';
+  $('#scanL').style.opacity = n / 3;
+});
+
+// accuracy bar graph (decorative bars sized to the real error: 0.0045° vs Sun disk 0.53°)
+$('#bars').innerHTML = Array.from({length: 18}, (_, k) => `<i class="${k < 15 ? 'on' : ''}" style="height:${20 + k * 4.4}%"></i>`).join('');
+
+// embedded app
+function loadApp() {
+  const f = $('#appframe');
+  if (!f.firstChild) f.innerHTML = '<iframe src="app/" title="CELESTE app" allow="fullscreen" allowfullscreen></iframe>';
+  f.hidden = false; $('#loadApp').textContent = 'APP LOADED ✓';
+}
+$('#loadApp').onclick = loadApp;
+
+// lightbox
+document.querySelectorAll('.card img').forEach((im) => im.onclick = () => { $('#lb img').src = im.src; $('#lb').classList.add('on'); });
+$('#lb').onclick = () => $('#lb').classList.remove('on');
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') $('#lb').classList.remove('on'); });
+
+show(0); schedule();
+</script>
+</body>
+</html>
